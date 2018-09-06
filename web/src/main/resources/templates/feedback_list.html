@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <title>全部反馈</title>
+  <link rel="shortcut icon" type="images/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="static/res/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="static/res/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="static/css/admin.css" />
+  <style>
+    .main .container-fluid td{
+    text-align: center;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <nav class="navbar">
+    </nav>
+    <div class="container-fluid">
+      <!-- 位置状态 -->
+      <div class="page-title">
+        <h1>全部反馈列表</h1>
+      </div>
+      <!-- <div class="position">
+         <span>您当前正在: </span><span>全部审核列表</span>
+      </div> -->
+      <div class="page-action">
+        <!-- show when multiple checked -->
+        <!-- <span>审核状态</span> -->
+        <form class="form-inline">
+          <select name="" id="status" class="form-control input-sm">
+            <option value="">反馈状态</option>
+            <option value="0">为回复</option>
+            <option value="1">已回复</option>
+          </select>
+          <!-- <span style="margin-left:15px">申请时间</span> -->
+          <input type="text" id="dataTable" class="form-control input-sm" placeholder="提交时间" />
+        </form>
+      </div>
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="text-center" width="100">提交时间</th>
+            <th class="text-center" width="200">状态</th>
+            <th class="text-center" width="500">反馈内容</th>
+            <th class="text-center" width="200">操作</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- 分页插件 -->
+  <div class="m-style"></div>
+  <!-- 侧边栏 -->
+  <div class="aside">
+
+  </div>
+  <script src="static/res/jquery/jquery.min.js"></script>
+  <script src="static/res/bootstrap/js/bootstrap.js"></script>
+  <script src="static/js/template-web.js"></script>
+  <script src="static/res/jquery/pagination.js"></script>
+  <script src="static/res/layer/laydate.js"></script>
+  <script src="static/js/feedback_list.js"></script>
+  <script id="my_fb_tmp" type="text/html">
+    {{each select}}
+    <tr>
+      <td>{{$value.createTime}}</td>
+      <td>{{$value.statusName}}</td>
+      <td class="text-center">{{$value.mapContent}}</td>
+      {{if $value.status===0}}
+      <td class="text-center" style="color:red;">{{$value.statusName}}</td>
+      {{else if $value.status===1}}
+      <td class="text-center" style="color:blue;">{{$value.statusName}}</td>
+      {{else}}
+      <td class="text-center">{{$value.statusName}}</td>
+      {{/if}}
+      <td class="text-center">
+        {{if $value.status !==0}}
+        <button type="button" class="btn btn-success check_user"  id="{{$value.id}}">查看</button>
+        {{else}}
+        <button type="button" class="btn btn-danger auditing" id="{{$value.id}}">审核</button>
+        {{/if}}
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+</body>
+
+</html>

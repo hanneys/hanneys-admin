@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: dev
+server:
+  port: 8089
+  context-path: /
+logging:
+  config: classpath:logback-${spring.profiles.active}.xml
+
+
+#spring:
+#  profiles:
+#    active: prd
+#server:
+#  port: 7079
+#  context-path: /
+#logging:
+#  config: classpath:logback-${spring.profiles.active}.xml

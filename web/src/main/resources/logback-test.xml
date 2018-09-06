@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+    <contextName>ngom-admin</contextName>
+
+    <appender name="fileInfoLog"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss}] [%thread] %-5level %logger{35} -	%msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/opt/logs/ngom-admin/%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!--指定最基础的日志输出级别-->
+    <root level="INFO">
+        <!--appender将会添加到这个loger-->
+        <appender-ref ref="fileInfoLog"/>
+    </root>
+</configuration>

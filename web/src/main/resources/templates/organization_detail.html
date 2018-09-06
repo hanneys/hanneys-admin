@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <title>查看</title>
+  <link rel="shortcut icon" type="images/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="static/res/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="static/res/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="static/css/admin.css" />
+  <style>
+    table,tbody{
+     width: 100%;
+  }
+  tbody{
+     padding: 10px;
+  }
+    tr{
+        width: 100%;
+        height: 50px;
+
+    }
+    tr td:first-child{
+      width:90px;
+    }
+    .main .container-fluid table{
+      background-color: #f8f9fb;
+    }
+</style>
+</head>
+
+<body>
+
+  <div class="main">
+    <!-- header -->
+    <nav class="navbar">
+    </nav>
+    <div class="container-fluid">
+      <div class="page-title">
+        <h1>用户详情</h1>
+      </div>
+      <div>
+        <table id="review_organization">
+          <!-- 模板要渲染的内容 -->
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- 侧边栏 -->
+  <div class="aside">
+
+  </div>
+
+  <script src="static/res/jquery/jquery.min.js"></script>
+  <script src="static/res/bootstrap/js/bootstrap.js"></script>
+  <script src="static/js/template-web.js"></script>
+  <script src="static/js/organization_detail.js"></script>
+
+  <script id="my_list" type="text/html">
+    <tr>
+      <td>客户logo:</td>
+      <td><img style="width:80px; height:80px; vertical-align: middle;" src="{{image}}" alt="" /></td>
+    </tr>
+    <tr>
+      <td>NGO名称:</td>
+      <td>{{name}}</td>
+    </tr>
+    <tr>
+      <td>NGO介绍:</td>
+      <td>{{desc}}</td>
+    </tr>
+    <tr>
+      <td>代币名称:</td>
+      <td>{{coinName}}</td>
+    </tr>
+    <tr>
+      <td>钱包地址:</td>
+      <td>{{personalAddress}}</td>
+    </tr>
+    <tr>
+      <td>合约地址:</td>
+      <td>{{contractAddress}}</td>
+    </tr>
+    <tr>
+      <td>发行数量:</td>
+      <td><span>{{coinNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>比例代币:</td>
+      <td class="scale_coin">{{exchangeNGOT}}</td>
+    </tr>
+    {{each positions}}
+    <tr>
+      <td>职位 / 会费:</td>
+      <td><span>{{$value.name}}</span> / <span>{{$value.fee}}</span> <span>{{coinName}}</span></td>
+    </tr>
+    {{/each}}
+    <tr>
+      <td>审核人</td>
+      <td>{{auditer}}</td>
+    </tr>
+    {{if remark}}
+    <tr>
+      <td>备注</td>
+      <td>{{remark}}</td>
+    </tr>
+    {{/if}}
+  </script>
+</body>
+
+</html>

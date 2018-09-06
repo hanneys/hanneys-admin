@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<body>
+  <div class="profile" id="profile">
+  </div>
+  <ul class="nav">
+    <li class="active">
+      <a href="#menu-posts" data-toggle="collapse">
+        <i class="fa fa-thumb-tack"></i>审核<i class="fa fa-angle-right"></i>
+      </a>
+      <ul id="menu-posts" class="collapse in">
+        <li class="active"><a href="organization_list.html">全部审核</a></li>
+        <li class="active"><a href="og_toaudit_list.html">待审核</a></li>
+        <!-- <li><a href="organization_detail.html">查看</a></li>
+            <li><a href="organization_audit.html">审核</a></li> -->
+      </ul>
+    </li>
+    <li>
+        <a href="#menu-posts" data-toggle="collapse">
+            <i class="fa fa-thumb-tack"></i>反馈<i class="fa fa-angle-right"></i>
+        </a>
+        <ul id="menu-posts" class="collapse in">
+            <li class="active"><a href="feedback_list.html">全部反馈</a></li>
+        </ul>
+    </li>
+  </ul>
+
+  <script src="static/res/jquery/jquery.min.js"></script>
+  <script src="static/js/template-web.js"></script>
+  <script src="static/js/broad.js"></script>
+  <script id="my_tmp" type="text/html">
+    <img class="avatar" src="static/img/default.png" />
+    <h3 class="name">{{name}}</h3>
+</script>
+</body>
+
+</html>

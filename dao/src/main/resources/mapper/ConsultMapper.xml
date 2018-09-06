@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ngom.dao.sys.ConsultMapper" >
+  <resultMap id="BaseResultMap" type="ngom.domain.article.Article_T" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="cover1" property="cover1" jdbcType="VARCHAR" />
+    <result column="cover2" property="cover2" jdbcType="VARCHAR" />
+    <result column="cover3" property="cover3" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="master_name" property="masterName" jdbcType="VARCHAR" />
+    <result column="vote_count" property="voteCount" jdbcType="INTEGER" />
+    <result column="master_reward_amount" property="masterRewardAmount" jdbcType="DECIMAL" />
+    <result column="release_time" property="releaseTime" jdbcType="TIMESTAMP" />
+    <result column="release_status" property="releaseStatus" jdbcType="SMALLINT" />
+    <result column="article_type" property="articleType" jdbcType="SMALLINT" />
+    <result column="settled_total" property="settledTotal" jdbcType="DECIMAL" />
+    <result column="unsettle_amount" property="unsettleAmount" jdbcType="DECIMAL" />
+    <result column="unsettle_date" property="unsettleDate" jdbcType="VARCHAR" />
+    <result column="vote_result" property="voteResult" jdbcType="DECIMAL" />
+    <result column="vote_end_time" property="voteEndTime" jdbcType="TIMESTAMP" />
+    <result column="mine_end_time" property="mineEndTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="del_flag" property="delFlag" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, title, cover1, cover2, cover3, category, source, master_name, vote_count, 
+    master_reward_amount, release_time, release_status, article_type, settled_total, 
+    unsettle_amount, unsettle_date, vote_result, vote_end_time, mine_end_time, create_time, 
+    update_time, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from article
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from article
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="ngom.domain.article.Article_T" >
+    insert into article (id, user_id, title, 
+      cover1, cover2, cover3, 
+      category, source, master_name, 
+      vote_count, master_reward_amount, release_time, 
+      release_status, article_type, settled_total, 
+      unsettle_amount, unsettle_date, vote_result, 
+      vote_end_time, mine_end_time, create_time, 
+      update_time, del_flag)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
+      #{cover1,jdbcType=VARCHAR}, #{cover2,jdbcType=VARCHAR}, #{cover3,jdbcType=VARCHAR}, 
+      #{category,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{masterName,jdbcType=VARCHAR}, 
+      #{voteCount,jdbcType=INTEGER}, #{masterRewardAmount,jdbcType=DECIMAL}, #{releaseTime,jdbcType=TIMESTAMP}, 
+      #{releaseStatus,jdbcType=SMALLINT}, #{articleType,jdbcType=SMALLINT}, #{settledTotal,jdbcType=DECIMAL}, 
+      #{unsettleAmount,jdbcType=DECIMAL}, #{unsettleDate,jdbcType=VARCHAR}, #{voteResult,jdbcType=DECIMAL}, 
+      #{voteEndTime,jdbcType=TIMESTAMP}, #{mineEndTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="ngom.domain.article.Article_T" >
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="cover1 != null" >
+        cover1,
+      </if>
+      <if test="cover2 != null" >
+        cover2,
+      </if>
+      <if test="cover3 != null" >
+        cover3,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="masterName != null" >
+        master_name,
+      </if>
+      <if test="voteCount != null" >
+        vote_count,
+      </if>
+      <if test="masterRewardAmount != null" >
+        master_reward_amount,
+      </if>
+      <if test="releaseTime != null" >
+        release_time,
+      </if>
+      <if test="releaseStatus != null" >
+        release_status,
+      </if>
+      <if test="articleType != null" >
+        article_type,
+      </if>
+      <if test="settledTotal != null" >
+        settled_total,
+      </if>
+      <if test="unsettleAmount != null" >
+        unsettle_amount,
+      </if>
+      <if test="unsettleDate != null" >
+        unsettle_date,
+      </if>
+      <if test="voteResult != null" >
+        vote_result,
+      </if>
+      <if test="voteEndTime != null" >
+        vote_end_time,
+      </if>
+      <if test="mineEndTime != null" >
+        mine_end_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="cover1 != null" >
+        #{cover1,jdbcType=VARCHAR},
+      </if>
+      <if test="cover2 != null" >
+        #{cover2,jdbcType=VARCHAR},
+      </if>
+      <if test="cover3 != null" >
+        #{cover3,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="masterName != null" >
+        #{masterName,jdbcType=VARCHAR},
+      </if>
+      <if test="voteCount != null" >
+        #{voteCount,jdbcType=INTEGER},
+      </if>
+      <if test="masterRewardAmount != null" >
+        #{masterRewardAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="releaseTime != null" >
+        #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releaseStatus != null" >
+        #{releaseStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="articleType != null" >
+        #{articleType,jdbcType=SMALLINT},
+      </if>
+      <if test="settledTotal != null" >
+        #{settledTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="unsettleAmount != null" >
+        #{unsettleAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="unsettleDate != null" >
+        #{unsettleDate,jdbcType=VARCHAR},
+      </if>
+      <if test="voteResult != null" >
+        #{voteResult,jdbcType=DECIMAL},
+      </if>
+      <if test="voteEndTime != null" >
+        #{voteEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mineEndTime != null" >
+        #{mineEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateConsultById" parameterType="ngom.domain.article.ArticleVo" >
+    update article
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="cover1 != null" >
+        cover1 = #{cover1,jdbcType=VARCHAR},
+      </if>
+      <if test="cover2 != null" >
+        cover2 = #{cover2,jdbcType=VARCHAR},
+      </if>
+      <if test="cover3 != null" >
+        cover3 = #{cover3,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="masterName != null" >
+        master_name = #{masterName,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseStatus != null" >
+        release_status = #{releaseStatus,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ngom.domain.article.Article_T" >
+    update article
+    set user_id = #{userId,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      cover1 = #{cover1,jdbcType=VARCHAR},
+      cover2 = #{cover2,jdbcType=VARCHAR},
+      cover3 = #{cover3,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      master_name = #{masterName,jdbcType=VARCHAR},
+      vote_count = #{voteCount,jdbcType=INTEGER},
+      master_reward_amount = #{masterRewardAmount,jdbcType=DECIMAL},
+      release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      release_status = #{releaseStatus,jdbcType=SMALLINT},
+      article_type = #{articleType,jdbcType=SMALLINT},
+      settled_total = #{settledTotal,jdbcType=DECIMAL},
+      unsettle_amount = #{unsettleAmount,jdbcType=DECIMAL},
+      unsettle_date = #{unsettleDate,jdbcType=VARCHAR},
+      vote_result = #{voteResult,jdbcType=DECIMAL},
+      vote_end_time = #{voteEndTime,jdbcType=TIMESTAMP},
+      mine_end_time = #{mineEndTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      del_flag = #{delFlag,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectArticleList" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from article
+    <where>
+      <if test="title != null" >
+        title LIKE "%"#{title}"%"
+      </if>
+      <if test="releaseStatus != null" >
+        AND  release_status = #{releaseStatus}
+      </if>
+        <if test="delFlag != null" >
+            AND  del_flag = #{delFlag}
+        </if>
+      <if test="start != null and end != null" >
+       <!-- AND release_time <![CDATA[>=]]> #{start} AND <![CDATA[<=]]> #{end} -->
+        AND release_time between #{start} AND #{end}
+      </if>
+    </where>
+     order by release_time desc
+  </select>
+
+  <select id="selectConsultById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from article
+    WHERE id=#{id}
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="ngom.domain.article.Article_T" >
+    update article
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="cover1 != null" >
+        cover1 = #{cover1,jdbcType=VARCHAR},
+      </if>
+      <if test="cover2 != null" >
+        cover2 = #{cover2,jdbcType=VARCHAR},
+      </if>
+      <if test="cover3 != null" >
+        cover3 = #{cover3,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="masterName != null" >
+        master_name = #{masterName,jdbcType=VARCHAR},
+      </if>
+      <if test="voteCount != null" >
+        vote_count = #{voteCount,jdbcType=INTEGER},
+      </if>
+      <if test="masterRewardAmount != null" >
+        master_reward_amount = #{masterRewardAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="releaseTime != null" >
+        release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releaseStatus != null" >
+        release_status = #{releaseStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="articleType != null" >
+        article_type = #{articleType,jdbcType=SMALLINT},
+      </if>
+      <if test="settledTotal != null" >
+        settled_total = #{settledTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="unsettleAmount != null" >
+        unsettle_amount = #{unsettleAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="unsettleDate != null" >
+        unsettle_date = #{unsettleDate,jdbcType=VARCHAR},
+      </if>
+      <if test="voteResult != null" >
+        vote_result = #{voteResult,jdbcType=DECIMAL},
+      </if>
+      <if test="voteEndTime != null" >
+        vote_end_time = #{voteEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mineEndTime != null" >
+        mine_end_time = #{mineEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=SMALLINT}
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+  <update id="delReleaseConsult" >
+    update article
+    <set >
+      <if test="releaseStatus != null" >
+        release_status = #{releaseStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="time != null" >
+        vote_end_time = #{time},
+       </if>
+       <if test="time != null" >
+        mine_end_time = #{time},
+       </if>
+        <if test="date != null" >
+            update_time = #{date},
+        </if>
+        <if test="date != null" >
+            release_time = #{date}
+        </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+</mapper>
